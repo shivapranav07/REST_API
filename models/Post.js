@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Define the post schema
 const PostSchema = new mongoose.Schema(
   {
     userId: {
@@ -17,6 +18,19 @@ const PostSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    comments: [
+      {
+        userId: {
+          type: String,
+          required: true,
+        },
+        commentText: {
+          type: String,
+          required: true,
+        },
+        // You can include other fields like timestamps, likes, etc. if needed
+      }
+    ]
   },
   { timestamps: true }
 );
