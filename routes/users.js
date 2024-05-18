@@ -1,10 +1,11 @@
+const { authMiddleware } = require("../middleware");
 const User = require("../models/User");
 
 const router  = require("express").Router();
 const bcrypt = require("bcrypt");
 
 //update user
-router.put("/:id", async (req, res) => {
+router.put("/:id",authMiddleware, async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     if (req.body.password) {
       try {
@@ -29,7 +30,7 @@ router.put("/:id", async (req, res) => {
  
 
 //delete user
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",authMiddleware, async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
       await User.findByIdAndDelete(req.params.id);
@@ -55,7 +56,7 @@ router.get("/:id", async (req, res) => {
 
 
 //follow a user 
-router.put("/:id/follow", async (req, res) => {
+router.put("/:id/follow",authMiddleware, async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
       const user = await User.findById(req.params.id);
@@ -77,7 +78,7 @@ router.put("/:id/follow", async (req, res) => {
 
 
 //unfollow a user
-router.put("/:id/unfollow", async (req, res) => {
+router.put("/:id/unfollow",authMiddleware,async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
       const user = await User.findById(req.params.id);
@@ -98,7 +99,7 @@ router.put("/:id/unfollow", async (req, res) => {
 });
 
 
-
+//this authMiddleware is used in every secure Api when ever we want to performe operation like update,post,delete we need to put token in Authorization header.
 
 
 

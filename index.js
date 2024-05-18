@@ -3,6 +3,7 @@ const mongoose  =  require("mongoose");
 const dotenv = require("dotenv");
 const helmet =require("helmet");
 const morgon = require("morgan");
+const jwt = require("jsonwebtoken");
 dotenv.config();
 const app = express();
 const userRouter  = require("./routes/users");
