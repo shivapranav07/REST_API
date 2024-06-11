@@ -11,7 +11,7 @@ const authRouter  = require("./routes/auth");
 const postRoute = require("./routes/posts");
 
  // Connect to MongoDB using async/await
- (async () => {
+ (async () =>{
   try {
     await mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
