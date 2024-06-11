@@ -1,6 +1,6 @@
 # REST API Documentation
 
-This REST API provides functionality for user authentication, posting, and commenting.
+This REST API  provides functionality for user authentication, posting, and commenting.
 
 ## Technologies Used
 
